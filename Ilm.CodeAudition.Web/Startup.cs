@@ -53,7 +53,7 @@ namespace Ilm.CodeAudition.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Timesheet}/{action=Index}/{id?}");
             });
         }
     }
