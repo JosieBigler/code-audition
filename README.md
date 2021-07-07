@@ -18,11 +18,11 @@ A lot of this is covered in the link, but a couple points to highlight:
 3. hit F5
 
 Requirements
-• The code is a mess; fix it up so that it follows best practices as you know them.
-• Implement one of the following stories:
-o As a consultant, I want to be able to add a project to my timesheet without leaving the main time entry screen, so I can enter my time faster.
-o As a manager, I want to ensure that people don t submit their time unless at least 40 hours are represented on the timesheet.
-o As a manager, I want to be notified via email whenever a timesheet has been successfully submitted, so that I can approve the hours immediately. (note - the application doesn't actually have to send the email)
+- The code is a mess; fix it up so that it follows best practices as you know them.
+- Implement one of the following stories:
+- As a consultant, I want to be able to add a project to my timesheet without leaving the main time entry screen, so I can enter my time faster.
+- As a manager, I want to ensure that people don t submit their time unless at least 40 hours are represented on the timesheet.
+- As a manager, I want to be notified via email whenever a timesheet has been successfully submitted, so that I can approve the hours immediately. (note - the application doesn't actually have to send the email)
 
 Delivery
 Any approach is allowed, as long as it fits within the following constraints:
