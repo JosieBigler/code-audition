@@ -10,14 +10,10 @@ namespace Ilm.CodeAudition.Service
 {
     public class TimeTrackerService
     {
-        public void HelloWorld()
-        {
-            Console.WriteLine("Hello World!");
-        }
 
         public void Save(Timesheet timesheet)
         {
-            var db = new Database();
+            var db = new TimesheetContext();
             var dbTimesheet = db.Timesheets.Find(timesheet.Id);
             dbTimesheet.Monday = timesheet.Monday;
             dbTimesheet.Tuesday = timesheet.Tuesday;
@@ -30,7 +26,7 @@ namespace Ilm.CodeAudition.Service
 
         public IList<Timesheet> GetAll()
         {
-            var db = new Database();
+            var db = new TimesheetContext();
             return db.Timesheets.ToList();
         }
     }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ilm.CodeAudition.Service.Migrations
 {
-    [DbContext(typeof(Database))]
+    [DbContext(typeof(TimesheetContext))]
     partial class DatabaseModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

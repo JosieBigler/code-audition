@@ -1,5 +1,5 @@
 ﻿@using Ilm.CodeAudition.Service
-@model IList<Ilm.CodeAudition.Service.Models.Timesheet>
+@model TimesheetViewModel
 
 @{
     ViewData["Title"] = "Timesheet";
@@ -35,41 +35,32 @@
     <tbody>
         @using (Html.BeginForm())
         {
-            for (int i = 1; i < new Database().Timesheets.Count() + 1; i++)
+            for (int i = 0; i < Model.Timesheets.Count; i++)
             {
                 <tr>
                     <td>
-                        @{ Model.Add(new Database().Timesheets.Find(i)); }
-                        @{ Model[i - 1].Id = new Database().Timesheets.Find(i).Id; }
-                        @{ Model[i - 1].EmployeeId = new Database().Timesheets.Find(i).EmployeeId; }
-                        @{ Model[i - 1].ProjectName = new Database().Timesheets.Find(i).ProjectName; }
-                        @Html.HiddenFor(x => Model[i - 1].Id)
-                        @Html.HiddenFor(x => Model[i - 1].EmployeeId)
-                        @Html.DisplayFor(x => Model[i - 1].ProjectName)
+                        @Html.HiddenFor(x => Model.Timesheets[i].Id)
+                        @Html.HiddenFor(x => Model.Timesheets[i].EmployeeId)
+                        @Html.DisplayFor(x => Model.Timesheets[i].ProjectName)
+                        @Html.HiddenFor(x => Model.Timesheets[i].ProjectName)
                     </td>
                     <td>
-                        @{ Model[i - 1].Monday = new Database().Timesheets.Find(i).Monday; }
-                        @Html.TextBoxFor(x => Model[i - 1].Monday, new { size = 5 })
+                        @Html.TextBoxFor(x => Model.Timesheets[i].Monday, new { size = 5 })
                     </td>
                     <td>
-                        @{ Model[i - 1].Tuesday = new Database().Timesheets.Find(i).Tuesday; }
-                        @Html.TextBoxFor(x => Model[i - 1].Tuesday, new { size = 5 })
+                        @Html.TextBoxFor(x => Model.Timesheets[i].Tuesday, new { size = 5 })
                     </td>
                     <td>
-                        @{ Model[i - 1].Wednesday = new Database().Timesheets.Find(i).Wednesday; }
-                        @Html.TextBoxFor(x => Model[i - 1].Wednesday, new { size = 5 })
+                        @Html.TextBoxFor(x => Model.Timesheets[i].Wednesday, new { size = 5 })
                     </td>
                     <td>
-                        @{ Model[i - 1].Thursday = new Database().Timesheets.Find(i).Thursday; }
-                        @Html.TextBoxFor(x => Model[i - 1].Thursday, new { size = 5 })
+                        @Html.TextBoxFor(x => Model.Timesheets[i].Thursday, new { size = 5 })
                     </td>
                     <td>
-                        @{ Model[i - 1].Friday = new Database().Timesheets.Find(i).Friday; }
-                        @Html.TextBoxFor(x => Model[i - 1].Friday, new { size = 5 })
+                        @Html.TextBoxFor(x => Model.Timesheets[i].Friday, new { size = 5 })
                     </td>
                     <td>
-                        @{ Model[i - 1].Total = new Database().Timesheets.Find(i).Total; }
-                        @Html.TextBoxFor(x => Model[i - 1].Total, new { size = 5 })
+                        @Html.TextBoxFor(x => Model.Timesheets[i].Total, new { size = 5 })
                     </td>
                 </tr>
             }

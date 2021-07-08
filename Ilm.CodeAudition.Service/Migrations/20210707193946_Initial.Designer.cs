@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ilm.CodeAudition.Service.Migrations
 {
-    [DbContext(typeof(Database))]
+    [DbContext(typeof(TimesheetContext))]
     [Migration("20210707193946_Initial")]
     partial class Initial
     {
