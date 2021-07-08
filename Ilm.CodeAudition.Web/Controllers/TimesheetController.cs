@@ -17,6 +17,7 @@ namespace Ilm.CodeAudition.Web.Controllers
 
         public ActionResult Index()
         {
+            //In a fully functional app you would call the Authenticated user rather than hardcoding.  I hardcoded for the sake of the demo. 
             var employee = _dbConext.Employees.Find(1);
 
             var viewModel = new TimesheetViewModel()
