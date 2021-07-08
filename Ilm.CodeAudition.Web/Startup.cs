@@ -33,7 +33,7 @@ namespace Ilm.CodeAudition.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<TimesheetContext>(
-                options => options.UseSqlServer("Data Source=Ilm.CodeAudition.Service.db"));
+                options => options.UseSqlite("Data Source=Ilm.CodeAudition.Service.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

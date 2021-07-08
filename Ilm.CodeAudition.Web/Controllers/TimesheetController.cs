@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using Ilm.CodeAudition.Service;
-using Ilm.CodeAudition.Service.Models;
 using Ilm.CodeAudition.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,31 +7,32 @@ namespace Ilm.CodeAudition.Web.Controllers
 {
     public class TimesheetController : Controller
     {
-        public TimesheetController()
-        {
+        private TimesheetContext _dbConext;
 
+        public TimesheetController(TimesheetContext dbContext)
+        {
+            _dbConext = dbContext;
         }
 
-        public ViewResult Index()
+        public ActionResult Index()
         {
-            var service = new TimeTrackerService();
-
             var viewModel = new TimesheetViewModel()
             {
-                Timesheets = service.GetAll()
+                Timesheets = _dbConext.Timesheets.ToList()
             };
 
             return View(viewModel);
         }
 
         [HttpPost]
-        public ViewResult Index(TimesheetViewModel viewModel)
+        public ActionResult Index(TimesheetViewModel viewModel)
         {
             foreach (var timesheet in viewModel.Timesheets)
             {
-                var service = new TimeTrackerService();
-                service.Save(timesheet);
+                _dbConext.Update(timesheet);
+                _dbConext.SaveChanges();
             }
+
             return View(viewModel);
         }
     }
