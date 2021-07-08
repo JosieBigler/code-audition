@@ -2,10 +2,23 @@
 
 namespace Ilm.CodeAudition.Service.Migrations
 {
-    public partial class Initial : Migration
+    public partial class ForeignKey : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Employees",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employees", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Timesheets",
                 columns: table => new
@@ -24,13 +37,27 @@ namespace Ilm.CodeAudition.Service.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Timesheets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Timesheets_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Timesheets_EmployeeId",
+                table: "Timesheets",
+                column: "EmployeeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Timesheets");
+
+            migrationBuilder.DropTable(
+                name: "Employees");
         }
     }
 }

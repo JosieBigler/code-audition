@@ -2,18 +2,32 @@
 using Ilm.CodeAudition.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ilm.CodeAudition.Service.Migrations
 {
     [DbContext(typeof(TimesheetContext))]
-    partial class DatabaseModelSnapshot : ModelSnapshot
+    [Migration("20210708143610_ForeignKey")]
+    partial class ForeignKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.11-servicing-32099");
+
+            modelBuilder.Entity("Ilm.CodeAudition.Service.Models.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Employees");
+                });
 
             modelBuilder.Entity("Ilm.CodeAudition.Service.Models.Timesheet", b =>
                 {
@@ -38,7 +52,17 @@ namespace Ilm.CodeAudition.Service.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EmployeeId");
+
                     b.ToTable("Timesheets");
+                });
+
+            modelBuilder.Entity("Ilm.CodeAudition.Service.Models.Timesheet", b =>
+                {
+                    b.HasOne("Ilm.CodeAudition.Service.Models.Employee", "Employee")
+                        .WithMany("Timesheets")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

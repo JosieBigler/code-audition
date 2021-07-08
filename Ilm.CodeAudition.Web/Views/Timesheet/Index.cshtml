@@ -5,6 +5,8 @@
     ViewData["Title"] = "Timesheet";
 }
 
+Consultant: @Model.Employee.Name
+
 <table class="table">
     <thead>
         <tr>
@@ -60,7 +62,7 @@
                         @Html.TextBoxFor(x => Model.Timesheets[i].Friday, new { size = 5 })
                     </td>
                     <td>
-                        @Html.TextBoxFor(x => Model.Timesheets[i].Total, new { size = 5 })
+                        @Html.DisplayFor(x => Model.Timesheets[i].Total, new { size = 5 })
                     </td>
                 </tr>
             }

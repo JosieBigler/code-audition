@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace Ilm.CodeAudition.Service.Models
@@ -9,5 +10,7 @@ namespace Ilm.CodeAudition.Service.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public ICollection<Timesheet> Timesheets { get; set; }
     }
 }

@@ -9,5 +9,6 @@ namespace Ilm.CodeAudition.Web.Models
     public class TimesheetViewModel
     {
         public IList<Timesheet> Timesheets { get; set; }
+        public Employee Employee { get; set; }
     }
 }

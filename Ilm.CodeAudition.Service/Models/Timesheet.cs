@@ -17,6 +17,8 @@ namespace Ilm.CodeAudition.Service.Models
         public int Thursday { get; set; }
         public int Friday { get; set; }
         public int Total { get; set; }
+
+        public Employee Employee { get; set; }
     }
 
 }
