@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Ilm.CodeAudition.Service;
+using Ilm.CodeAudition.Service.Models;
 using Ilm.CodeAudition.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,7 +31,11 @@ namespace Ilm.CodeAudition.Web.Controllers
         [HttpPost]
         public ActionResult Index(TimesheetViewModel viewModel)
         {
-            if(viewModel.Timesheets != null)
+            var employee = _dbConext.Employees.Find(1);
+
+            viewModel.Employee = employee;
+
+            if (viewModel.Timesheets != null)
             {
                 foreach (var timesheet in viewModel.Timesheets)
                 {
@@ -41,6 +46,21 @@ namespace Ilm.CodeAudition.Web.Controllers
             }
 
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult AddProject(string projectName)
+        {
+            var newTimesheet = new Timesheet()
+            {
+                EmployeeId = 1,
+                ProjectName = projectName
+            };
+
+            _dbConext.Add(newTimesheet);
+            _dbConext.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
