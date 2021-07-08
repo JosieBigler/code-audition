@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
 	<IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
+	<UserSecretsId>efdfbd9f-f570-41b5-9733-9da040682f08</UserSecretsId>
   </PropertyGroup>
 
 
@@ -18,6 +19,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ilm.CodeAudition.Service\Ilm.CodeAudition.Service.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
   </ItemGroup>
 
 </Project>

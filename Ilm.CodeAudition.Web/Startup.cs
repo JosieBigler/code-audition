@@ -18,12 +18,9 @@ namespace Ilm.CodeAudition.Web
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureDevelopmentServices(IServiceCollection services)
         {
-
             services.AddCookiePolicy();
-
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -31,6 +28,19 @@ namespace Ilm.CodeAudition.Web
 
             services.AddDbContext<TimesheetContext>(
                 options => options.UseSqlite(connectionString));
+        }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddCookiePolicy();
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            var connectionString = Configuration.GetConnectionString("Default");
+
+            services.AddDbContext<TimesheetContext>(
+                options => options.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
